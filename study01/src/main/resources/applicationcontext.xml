@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--  普通bean 通过set注入  -->
+    <bean id="p1" class="pojo.Person">
+        <property name="name" value="张三"/>
+        <property name="age" value="18"/>
+    </bean>
+    <!-- 普通Bean 通过构造器珠如宝 -->
+    <bean id="p2" class="pojo.Person">
+        <constructor-arg name="name" value="李四"/>
+        <constructor-arg name="age" value="20"/>
+    </bean>
+
+    <!-- 工厂Bean 通过id获取的对象为工厂Bean getObject方法返回的对象 -->
+    <bean id="conn" class="pojo.MyFactoryBean">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/vhr?useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+
+    <!-- 实例工厂Bean -->
+    <bean id="impFactoryBean" class="pojo.ImpFactoryBean"/>
+    <bean id="conn2" factory-bean="impFactoryBean" factory-method="getConn"/>
+
+    <!-- 静态工厂Bean -->
+    <bean id="conn3" class="pojo.StaticFactoryBean" factory-method="getConn"/>
+
+
+
+
+
+</beans>
