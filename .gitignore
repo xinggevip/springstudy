@@ -1,2 +1,9 @@
 # Project exclude paths
 /study01/target/
+## ide
+**/.idea
+*.iml
+
+## backend
+**/target
+**/logs

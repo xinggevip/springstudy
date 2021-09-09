@@ -8,7 +8,7 @@
         <property name="name" value="张三"/>
         <property name="age" value="18"/>
     </bean>
-    <!-- 普通Bean 通过构造器珠如宝 -->
+    <!-- 普通Bean 通过构造器注入 -->
     <bean id="p2" class="pojo.Person">
         <constructor-arg name="name" value="李四"/>
         <constructor-arg name="age" value="20"/>
