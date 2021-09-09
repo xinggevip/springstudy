@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>study01</module>
+        <module>study02</module>
     </modules>
 
     <dependencies>
