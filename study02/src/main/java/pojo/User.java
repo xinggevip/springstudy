@@ -1,9 +1,11 @@
 package pojo;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 
-public class User implements InitializingBean, DisposableBean {
+public class User implements InitializingBean, DisposableBean, BeanPostProcessor {
 
     public User() {
         System.out.println("User 构造器");
@@ -26,5 +28,21 @@ public class User implements InitializingBean, DisposableBean {
 
     public void myDestroy() {
         System.out.println("User 自定义销毁前方法 -- myDestory");
+    }
+
+    @Override
+    public Object postProcessBeforeInitialization(Object bean, String beanName)
+            throws BeansException {
+        // 输出信息，方便我们看效果
+        System.out.println("before -- " + beanName);
+        return bean;
+    }
+
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName)
+            throws BeansException {
+        // 输出信息，方便我们看效果
+        System.out.println("after -- " + beanName);
+        return bean;
     }
 }
